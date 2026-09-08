@@ -13,6 +13,11 @@ for arg in sys.argv[1:]:
 # Save all = save all frames
 # Duration in ms
 # loop = 0  infinite time
-images[0].save(
-    "costumes.gif", save_all = True, append_images=[images[1]], duration=200, loop=0
+
+images[0].save(         # Serve as base
+    "costumes.gif", 
+    save_all = True, 
+    append_images=[images[1]], # These are next frames
+    duration=100, 
+    loop=0
 )
