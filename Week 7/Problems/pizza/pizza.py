@@ -15,7 +15,7 @@ elif len(sys.argv) > 2:
 
 file_name = sys.argv[1]
 if not file_name.endswith(".csv"):
-    print("Not a Python file")
+    print("Not a csv file")
     sys.exit()
 
 menu = []
@@ -23,12 +23,25 @@ menu = []
 try:
     with open(f"{file_name}", "r") as file:
         reader = csv.DictReader(file)
-        for row in reader:
-            menu.append({"Sicilian Pizza":row["Sicilian Pizza"],
-                         "Small": row["Small"],
-                         "Large": row["Large"]})
+        if file_name == "sicilian.csv":
+            for row in reader:
+                menu.append(
+                    {
+                        "Sicilian Pizza": row["Sicilian Pizza"],
+                        "Small": row["Small"],
+                        "Large": row["Large"]
+                        })
+        elif file_name == "regular.csv":
+            for row in reader:
+                menu.append(
+                    {
+                        "Regular Pizza": row["Regular Pizza"],
+                        "Small": row["Small"],
+                        "Large": row["Large"]
+                        })
+            
 except FileNotFoundError:
     print("File does not exist")
     sys.exit()
 
-print(tabulate(menu, headers=["Sicilian Pizza","Small", "Large"]), tablefmt="grid")
+print(tabulate(menu, headers="keys", tablefmt="grid"))
