@@ -1,12 +1,16 @@
 class Student:
-    def __init__(self, name, house, patronus):
+    def __init__(self, name, house):
 
         if not name:
             raise ValueError("Missing Name.")
         
         self.name = name 
         self.house = house # Also calling setter method
-        self.patronus = patronus
+        # self.patronus = patronus
+
+    @classmethod
+    def get(cls):
+         return cls(input("Name: "), input("House: "))
 
     def __str__(self):       # Where a string is expected, this can help sending class as str
         return f"{self.name} is from {self.house}"
@@ -35,16 +39,17 @@ class Student:
                 return "wand"
 
 def main():
-    student = get_student()
-    student.house = "Number Four, Privet Drive" # setter getting called
-    # print(f"{student.name} is from {student.house}")
-    print(student)
+    # student = get_student()
+    # student.house = "Number Four, Privet Drive" # setter getting called
+    # print(student)
+    student = Student.get()
+    print(f"{student.name} is from {student.house}")
 
-def get_student():
-    name = input("Name: ")
-    house = input("House: ")
-    patronus = input("Patronus: ")
-    return Student(name, house, patronus)
+# def get_student():
+#     name = input("Name: ")
+#     house = input("House: ")
+#     patronus = input("Patronus: ")
+#     return Student(name, house, patronus)
 
 
 # def get_student():
