@@ -19,7 +19,7 @@
 # -------------------------- Type hints / mypy
 # docs.python.org/3/library/typing.html
 
-def meow(n: int):  # its a hint
+def meow(n: int) -> None: # its a hint, -> means its returns nothing
     for _ in range(n):
         print("meow")
 number: int = int(input("Number: "))
